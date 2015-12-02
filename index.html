@@ -22,9 +22,9 @@ body {
 	padding-top: 0.5em;
 
 	z-index: 2;
-	font-size: 150%;	
+	font-size: 150%;
 	color: #BDBDBD;
-	
+
 }
 #infoHeader .title {
 	font-size: 150%;
@@ -48,7 +48,7 @@ body {
 	padding-top: 0.5em;
 
 	z-index: 2;
-	font-size: 150%;	
+	font-size: 150%;
 	color: #BDBDBD;
 
 }
@@ -81,12 +81,12 @@ body {
 	padding		: 15px;
 	padding-top	: 5px;
 	padding-bottom	: 5px;
-	
+
 
 	border-radius	: 1000px;
 	border-color	: #BDBDBD;
 	border-style	: solid;
-	border-width	: 2px;	
+	border-width	: 2px;
 }
 #infoButton:hover {
 	cursor: pointer;
@@ -96,7 +96,7 @@ body {
 	top		: 80px;
 	left		: 10px;
 	z-index		: 2;
-	
+
 	font-size	: 150%;
 	width: 30%;
 
@@ -112,16 +112,16 @@ body {
 	border-radius	: 10px;
 	border-color	: black;
 	border-style	: solid;
-	border-width	: 2px;	
+	border-width	: 2px;
 }
 #infoPopup a {
-	color		: #8888ff;	
+	color		: #8888ff;
 }
 </style><div id="infoHeader">
 	<span class='title'>Video Browser For LearningThree.js</span>
 </div><div id="infoFooter">
 	<span class='title'>
-		<span class='legendButton'>Left Button</span> 
+		<span class='legendButton'>Left Button</span>
 		For Previous
 		-
 		For Next
@@ -134,8 +134,8 @@ In this tvset, you can look at all the videos from
 <a href='http://learningthreejs.com' target='_blank'>learningthreejs blog</a>.
 
 <br/><br/>
-This is based on the 
-<a href='http://www.youtube.com/watch?v=FY4UQpu1ijM&list=UUDyknKncQDzw7NdqYj2_94A' target='_blank'>youtube channel</a>. 
+This is based on the
+<a href='http://www.youtube.com/watch?v=FY4UQpu1ijM&list=UUDyknKncQDzw7NdqYj2_94A' target='_blank'>youtube channel</a>.
 and yes what you see is an actual
 youtube player <strong>*inside*</strong> a webgl scene!
 
@@ -150,7 +150,6 @@ Just use the arrow keys.
 <script>
 requirejs.config({
 	paths	: {
-
 		"build"		: "vendor/tquery/build",
 		"plugins"	: "vendor/tquery/plugins",
 		'threex'	: 'vendor/tquery/vendor/threex',
@@ -169,15 +168,15 @@ require([ 'tquery.controls'
 	, 'tquery.htmlmixer'
 ], function(){
 	var world	= tQuery.createWorld().boilerplate().start();
-	
+
 	document.querySelector('#infoButton').addEventListener('click', function(event){
 		var element	= document.querySelector('#infoPopup');
 		console.log('display', element.style.display)
 		element.style.display	= element.style.display === 'none' ? 'block' : 'none';
 	});
-	
+
 	// enable domEvent on this world
-	world.enableDomEvent();	
+	world.enableDomEvent();
 
 	// setup camera position
 	world.camera().positionY(1.5).positionZ(4).lookAt(0,1, 0)
@@ -199,7 +198,7 @@ require([ 'tquery.controls'
 	//////////////////////////////////////////////////////////////////////////////////
 	//		comment								//
 	//////////////////////////////////////////////////////////////////////////////////
-	
+
 
 	tQuery.createGrassGround({
 		textureRepeatX	: 10,
@@ -209,7 +208,7 @@ require([ 'tquery.controls'
 	//////////////////////////////////////////////////////////////////////////////////
 	//		comment								//
 	//////////////////////////////////////////////////////////////////////////////////
-	
+
 	// moving player
 	var player	= tQuery.createMinecraftPlayer().addTo(world);
 	world.hook(function(){
@@ -223,7 +222,7 @@ require([ 'tquery.controls'
 
 	// tQuery.world.camera().positionY(1.5).positionZ(-4).lookAt(0,0.5, 0)
 	// 	.addTo(player.character().object3D())
-	
+
 	var object3D	= player.character().object3D()
 	object3D.positionX(1.5).positionZ(0)
 		.rotationY(13*Math.PI/8)
@@ -260,7 +259,7 @@ require([ 'tquery.controls'
 	character.parts.legR.rotation.z = -30*Math.PI/180;
 	character.parts.armR.rotation.x = -30*Math.PI/180;
 	character.parts.armL.rotation.x = -30*Math.PI/180;
-	
+
 	//////////////////////////////////////////////////////////////////////////////////
 	//		load the model							//
 	//////////////////////////////////////////////////////////////////////////////////
@@ -281,19 +280,19 @@ require([ 'tquery.controls'
 		var container	= tQuery.createObject3D().addTo(world)
 			.positionZ(-0.5)
 			.scaleBy(3)
-		
+
 		var tvSet	= tQuery(collada.scene).addTo(container)
 			.positionY(-0.4)
 
 		//var url		= 'http://www.youtube.com/embed/FY4UQpu1ijM';
-		var url		= 'http://example.org';
+		var url		= 'https://ipfs.io/ipfs/QmavE42xtK1VovJFVTVkCR5Jdf761QWtxmvak9Zx718TVr/';
 		//var url	= 'http://pacmaze.com';
 		var plane	= tQuery.createHTMLMixerPlane(url).addTo(container)
 			.addClass('screen')
 			.positionY(0.31).positionZ(0.16)
 			.scaleX(1/2.2).scaleY(1/2.85)
 
-		initChannel();	
+		// initChannel();
 	});
 
 	function initChannel(){
@@ -345,7 +344,7 @@ require([ 'tquery.controls'
 				setVideoUrl( videoIdx )
 			});
 
-	
+
 			// BUTTON PREV
 			var element		= document.createElement( 'div' );
 			element.style.width	= '256px';
@@ -362,7 +361,7 @@ require([ 'tquery.controls'
 				videoIdx	= (videoIdx-1 + videos.length) % videos.length;
 				setVideoUrl( videoIdx )
 			});
-			
+
 			videoIdx	= 0;
 			setVideoUrl( videoIdx )
 		}
